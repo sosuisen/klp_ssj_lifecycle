@@ -1,35 +1,25 @@
-import java.lang.ref.Cleaner;
-
 public class Main {
     private MemoMap memoMap = new MemoMap();
-    private final Cleaner cleaner = Cleaner.create();
 
     void main() throws InterruptedException {
-        cleaner.register(memoMap, () -> IO.println("memoMap(aggregation) is destructed."));
+        var rt = Runtime.getRuntime();
 
-        test();
-        System.gc();
-        Thread.sleep(3000);
+        int max = 50_000;
+        for (int i = 1; i <= max; i++) {
+            test();
 
-        memoMap = null;
-        System.gc();
-        Thread.sleep(3000);
+            if (i % 10_000 == 0) {
+                System.gc();
+                var usedMB = (rt.totalMemory() - rt.freeMemory()) / 1024 / 1024;
+                IO.println("count " + i + " used: " + usedMB + " MB");
+            }
+        }
     }
 
-    /*
-     * Writerオブジェクトは、testメソッド内で生成されて、
-     * ローカル変数writerに代入されます。
-     * そのため、（循環参照がないよう正しく設計されていれば）
-     * testメソッドの処理が終わったとき、すぐにGCの対象になります。
-     * (寿命が短い)
-     */
     void test() {
-        // memoMapオブジェクトはWriterクラスの外部で生成して、コンストラクタ経由で渡します。
         var writer = new Writer(memoMap);
 
-        cleaner.register(writer, () -> IO.println("writer is destructed."));
-        writer.addLine("hello");
-        writer.addLine("world");
-        writer.print();
+        writer.addLine("hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        writer.addLine("world!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 }
