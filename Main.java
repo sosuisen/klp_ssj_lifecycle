@@ -16,6 +16,13 @@ public class Main {
         Thread.sleep(3000);
     }
 
+    /*
+     * Writerオブジェクトは、testメソッド内で生成されて、
+     * ローカル変数writerに代入されます。
+     * そのため、（循環参照がないよう正しく設計されていれば）
+     * testメソッドの処理が終わったとき、すぐにGCの対象になります。
+     * (寿命が短い)
+     */
     void test() {
         // memoMapオブジェクトはWriterクラスの外部で生成して、コンストラクタ経由で渡します。
         var writer = new Writer(memoMap);
