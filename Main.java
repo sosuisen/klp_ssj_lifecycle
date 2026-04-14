@@ -8,12 +8,13 @@ public class Main {
         cleaner.register(memoMap, () -> IO.println("memoMap(aggregation) is destructed."));
 
         test(memoMap);
-        System.gc();
-        Thread.sleep(3000);
 
-        memoMap = null;
-        System.gc();
-        Thread.sleep(3000);
+        // System.gc();
+        // Thread.sleep(3000);
+
+        // memoMap = null;
+        // System.gc();
+        // Thread.sleep(3000);
     }
 
     /*
