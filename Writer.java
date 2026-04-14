@@ -21,7 +21,7 @@ public class Writer {
         /*
          * MemoListオブジェクトはWriterクラスの内部で生成され、
          * フィールドに保持されます。
-         * この構造は「合成」（composition）と呼ばれます。
+         * この構造は「コンポジション」（composition）と呼ばれます。
          * 
          * このとき、MemoListオブジェクトは、privateにして、getterも持たない限り、
          * 外部からは参照されません。
