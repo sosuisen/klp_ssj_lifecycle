@@ -1,12 +1,13 @@
 public class Main {
-    private MemoMap memoMap = new MemoMap();
 
     void main() throws InterruptedException {
+        var memoMap = new MemoMap();
+
         var rt = Runtime.getRuntime();
 
         int max = 50_000;
         for (int i = 1; i <= max; i++) {
-            test();
+            test(memoMap);
 
             if (i % 10_000 == 0) {
                 System.gc();
@@ -16,7 +17,7 @@ public class Main {
         }
     }
 
-    void test() {
+    void test(MemoMap memoMap) {
         var writer = new Writer(memoMap);
 
         writer.addLine("hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
