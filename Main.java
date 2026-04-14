@@ -1,13 +1,13 @@
 import java.lang.ref.Cleaner;
 
 public class Main {
-    private MemoMap memoMap = new MemoMap();
     private final Cleaner cleaner = Cleaner.create();
 
     void main() throws InterruptedException {
+        var memoMap = new MemoMap();
         cleaner.register(memoMap, () -> IO.println("memoMap(aggregation) is destructed."));
 
-        test();
+        test(memoMap);
         System.gc();
         Thread.sleep(3000);
 
@@ -23,7 +23,7 @@ public class Main {
      * testメソッドの処理が終わったとき、すぐにGCの対象になります。
      * (寿命が短い)
      */
-    void test() {
+    void test(MemoMap memoMap) {
         // MemoMapオブジェクトはWriterクラスの外部で生成して、コンストラクタ経由で渡します。
         var writer = new Writer(memoMap);
 

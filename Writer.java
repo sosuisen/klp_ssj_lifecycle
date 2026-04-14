@@ -1,8 +1,8 @@
 import java.lang.ref.Cleaner;
 
 public class Writer {
-    private final MemoList memoList;
     private final MemoMap memoMap;
+    private final MemoList memoList;
 
     private final Cleaner cleaner = Cleaner.create();
 
