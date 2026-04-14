@@ -24,7 +24,7 @@ public class Main {
      * (寿命が短い)
      */
     void test() {
-        // memoMapオブジェクトはWriterクラスの外部で生成して、コンストラクタ経由で渡します。
+        // MemoMapオブジェクトはWriterクラスの外部で生成して、コンストラクタ経由で渡します。
         var writer = new Writer(memoMap);
 
         cleaner.register(writer, () -> IO.println("writer is destructed."));
