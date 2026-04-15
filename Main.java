@@ -19,6 +19,7 @@ public class Main {
 
     void test(MemoMap memoMap) {
         var writer = new Writer(memoMap);
+        // memoMap.register(writer);
 
         writer.addLine("hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         writer.addLine("world!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
